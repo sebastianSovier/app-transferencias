@@ -1,0 +1,67 @@
+<mat-card class="carta-crearusuario">
+    <form [formGroup]="ingresarDestinatarioFormGroup" (ngSubmit)="IngresarDestinatario()">
+        <div class="example-container" style="color: white;text-align: center;margin-top: 6%;margin-bottom: 2%;">
+            <div style="margin-right: 2%;">
+                <div>
+                    <mat-label style="font-size: 25px;">Crear Nuevo Destinatario</mat-label>
+                </div>
+                <div style="margin-top: 2%;">
+
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>RUT</mat-label>
+                        <input matInput type="text"  class="example-right-align" name="rut_destinatario"
+                            id="rut_destinatario" class="form-control" required minlength="5"
+                            formControlName="rut_destinatario">
+                    </mat-form-field>
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput type="text" class="example-right-align" name="nombre_destinatario"
+                            id="nombre_destinatario" class="form-control" required minlength="5"
+                            formControlName="nombre_destinatario">
+                    </mat-form-field>
+
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>Correo</mat-label>
+                        <input matInput type="email" class="example-right-align" name="correo_destinatario"
+                            id="correo_destinatario" class="form-control" required minlength="5"
+                            formControlName="correo_destinatario">
+                    </mat-form-field>
+
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput type="number" name="telefono_destinatario" id="telefono_destinatario"
+                            class="form-control" required minlength="6" formControlName="telefono_destinatario">
+
+                    </mat-form-field>
+
+
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>Banco</mat-label>
+                        <mat-select formControlName="banco_destino">
+                            <mat-option *ngFor="let banco of listaBancos" required [value]="banco.name">{{banco.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>Tipo de Cuenta</mat-label>
+                        <mat-select formControlName="tipo_cuenta">
+                            <mat-option *ngFor="let cuentas of listaCuentas" required [value]="cuentas.name">
+                                {{cuentas.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>N° De Cuenta</mat-label>
+                        <input matInput type="number" name="numero_cuenta" id="numero_cuenta" class="form-control"
+                            required minlength="6" formControlName="numero_cuenta">
+
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-right" style="margin-top:1%;">
+            <button mat-raised-button color="primary" [disabled]="!ingresarDestinatarioFormGroup.valid">Crear
+                Destinatario</button>
+        </div>
+    </form>
+</mat-card>

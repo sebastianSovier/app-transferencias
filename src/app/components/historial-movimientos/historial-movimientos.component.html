@@ -1,0 +1,35 @@
+<mat-card class="carta-mantenedor">
+  <table mat-table [dataSource]="dataSourceTransferencias" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="nombre_destinatario">
+      <th mat-header-cell *matHeaderCellDef> Nombre Destinatario </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre_destinatario}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rut_destinatario">
+      <th mat-header-cell *matHeaderCellDef> Rut Destinatario </th>
+      <td mat-cell *matCellDef="let element"> {{element.rut_destinatario}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="banco_destino">
+      <th mat-header-cell *matHeaderCellDef> Banco Destino </th>
+      <td mat-cell *matCellDef="let element"> {{element.banco_destino}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="tipo_cuenta">
+      <th mat-header-cell *matHeaderCellDef> Tipo De Cuenta </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipo_cuenta}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="monto_transferencia">
+      <th mat-header-cell *matHeaderCellDef> Monto Transferencia </th>
+      <td mat-cell *matCellDef="let element"> ${{element.monto_transferencia}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+</mat-card>

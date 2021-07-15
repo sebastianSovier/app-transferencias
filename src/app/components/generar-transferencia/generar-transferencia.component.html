@@ -1,0 +1,45 @@
+<mat-card class="carta-login">
+    <form [formGroup]="ingresarTransferenciaFormGroup" (ngSubmit)="IngresarTransferencia()">
+        <div class="example-container" style="color: white;text-align: center;margin-top: 6%;margin-bottom: 2%;">
+            <div style="margin-right: 2%;">
+                <div>
+                    <mat-label style="font-size: 25px;">Transferir</mat-label>
+                </div>
+                <div style="margin-top: 2%;">
+
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>Destinatario</mat-label>
+                        <mat-select (selectionChange)="CompletarDetallesDestinatario($event.value)"
+                            formControlName="nombre_destinatario">
+                            <mat-option *ngFor="let destinatario of listaDestinatarios" required [value]="destinatario">
+                                {{destinatario.destinatario_id}} - {{ destinatario.nombre_destinatario}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-label>Detalle Del Destinatario</mat-label>
+                    <br>
+                    <mat-label>Nombre: {{selectedDestinatario.nombre_destinatario}}</mat-label>
+                    <br>
+                    <mat-label>Correo: {{selectedDestinatario.correo_destinatario}}</mat-label>
+                    <br>
+                    <mat-label>Banco: {{selectedDestinatario.banco_destino}}</mat-label>
+                    <br>
+                    <mat-label>Tipo de cuenta: {{selectedDestinatario.tipo_cuenta}}</mat-label>
+                    <br>
+                    <br>
+                    <mat-form-field style="display: contents;" appearance="fill">
+                        <mat-label>Monto</mat-label>
+                        <input matInput type="number" class="example-right-align" name="monto_transferencia"
+                            id="monto_transferencia" class="form-control" required minlength="5"
+                            formControlName="monto_transferencia">
+                    </mat-form-field>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 text-right" style="margin-top:2%;margin-left: 20%;">
+            <button mat-raised-button color="primary" style="width: 50%;"
+                [disabled]="!ingresarTransferenciaFormGroup.valid">Transferir</button>
+        </div>
+    </form>
+</mat-card>
