@@ -1,5 +1,5 @@
 {
-    "UrlApi": "https://still-chamber-92889.herokuapp.com",
+    "UrlApi": "https://secure-headland-74545.herokuapp.com",
     "ErrorCatch":"Hubo Problemas Al Ejecutar la Peticion.",
     "ErrorCatchAction":"Reintente"
 }
