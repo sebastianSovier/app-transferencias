@@ -58,6 +58,7 @@ export class NuevoDestinatarioComponent implements OnInit {
         this.destinatarioService.CrearDestinatario(objetoDestinatario).subscribe((datos) => {
           if (datos.datos.Codigo === "0") {
             this.ingresarDestinatarioFormGroup.reset();
+            this.ingresarDestinatarioFormGroup.clearValidators();
             this.openSnackBar("operacion exitosa","Aceptar");
           } else {
             this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);

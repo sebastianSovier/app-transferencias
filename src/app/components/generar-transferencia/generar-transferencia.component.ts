@@ -44,10 +44,10 @@ export class GenerarTransferenciaComponent implements OnInit {
         const objetoTransferencia = { destinatario_id: this.selectedDestinatario.destinatario_id, monto_transferencia: this.getMontoTransferencia };
         this.transferenciasService.CrearTransferencia(objetoTransferencia).subscribe((datos) => {
           if(datos.datos.Codigo === "0"){
-            this.openSnackBar("operacion exitosa","Aceptar");
             this.selectedDestinatario = new Destinatario();
             this.ingresarTransferenciaFormGroup.reset();
             this.ingresarTransferenciaFormGroup.clearValidators();
+            this.openSnackBar("operacion exitosa","Aceptar");
           }else{
             this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
           }
