@@ -12,12 +12,12 @@ export class TransferenciasService {
 
 
   ObtenerHistorialMovimientos() {
-    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token')});
+    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token'),'Access-Control-Allow-Origin':'*'});
     const result: Observable<any> = this.http.get(AppConfig.settings.UrlApi + '/Movimientos/ObtenerMovimientos',{headers: headers});
     return result;
   }
   CrearTransferencia(transferenciaRequest: any) {
-    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token')});
+    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token'),'Access-Control-Allow-Origin':'*'});
     const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi + '/Movimientos/IngresarTransferencia', transferenciaRequest,{headers: headers});
     return result;
   }

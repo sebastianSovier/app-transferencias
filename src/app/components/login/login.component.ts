@@ -114,11 +114,11 @@ export class LoginComponent implements OnInit {
       if (f.valid) {
         this.loading.cambiarestadoloading(true);
         const loginRequest = { usuario: this.usuarioCrear, contrasena: this.contrasenaCrear, nombre_completo: this.nombre_completoCrear, correo: this.correoCrear };
-        this.loginService.CrearUsuario(loginRequest).subscribe((datos: { Error: undefined; datos: string; }) => {
+        this.loginService.CrearUsuario(loginRequest).subscribe((datos: {Codigo:string ,Error: undefined; datos: string; }) => {
           if (datos.Error !== undefined) {
             this.openSnackBar("Hubo problemas al crear su usuario Intente nuevamente.", "Reintente");
           } else {
-            if (datos.datos === 'ok') {
+            if (datos.Codigo === "0") {
               this.login = true;
               this.openSnackBar("Usuario creado exitosamente.", "Ok");
             } else {

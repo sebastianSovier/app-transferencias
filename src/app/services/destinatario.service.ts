@@ -12,13 +12,13 @@ export class DestinatarioService {
 
 
   ObtenerDestinatarios() {
-    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token')});
+    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token'),'Access-Control-Allow-Origin':'*'});
     const result: Observable<any> = this.http.get(AppConfig.settings.UrlApi +'/Destinatario/ObtenerDestinatario',{headers: headers});
     return result;
   }
 
   CrearDestinatario(DestinatarioRequest: any) {
-    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token')});
+    const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token'),'Access-Control-Allow-Origin':'*'});
     const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi +'/Destinatario/IngresarDestinatario', DestinatarioRequest,{headers: headers});
     return result;
   }
