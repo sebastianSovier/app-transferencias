@@ -24,7 +24,6 @@ export class LoginService {
     return result;
   }
   CrearUsuario(loginRequest: any) {
-    const headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
     const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi +'/Account/IngresarUsuario', loginRequest);
     return result;
   }
