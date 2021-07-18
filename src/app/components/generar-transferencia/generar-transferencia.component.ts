@@ -66,7 +66,7 @@ export class GenerarTransferenciaComponent implements OnInit {
     try {
       this.loading.cambiarestadoloading(true);
       this.destinatarioService.ObtenerDestinatarios().subscribe((datos) => {
-        if(datos.datos.codigo === AppConfig.settings.CodigoExitoso){
+        if(datos.datos.Codigo === AppConfig.settings.CodigoExitoso){
         this.listaDestinatarios = datos.datos.data.data;
         console.log(this.listaDestinatarios);
         }else{
