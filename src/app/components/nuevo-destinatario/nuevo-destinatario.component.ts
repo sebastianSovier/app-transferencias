@@ -61,7 +61,7 @@ export class NuevoDestinatarioComponent implements OnInit {
             this.ingresarDestinatarioFormGroup.clearValidators();
             this.openSnackBar("operacion exitosa","Aceptar");
           } else {
-            this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+            this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
           }
         });
       }
@@ -80,7 +80,7 @@ export class NuevoDestinatarioComponent implements OnInit {
         this.listaBancos = datos.banks;
       });
     } catch (error) {
-      this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+      this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
     } finally {
       this.loading.cambiarestadoloading(false);
     }
