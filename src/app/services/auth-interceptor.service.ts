@@ -1,4 +1,4 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from "@angular/common/http";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
@@ -14,15 +14,13 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const token: string | null = localStorage.getItem('token');
+    const headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
 
     let request = req;
 
-    if (token) {
+    if (request) {
       request = req.clone({
-        setHeaders: {
-          authorization: `Bearer ${token}`
-        }
+          headers
       });
     }
 
