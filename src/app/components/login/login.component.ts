@@ -69,8 +69,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    sessionStorage.clear();
     this.loading.cambiarestadoloading(false);
+    sessionStorage.clear();
   }
 
   get usuario() { return this.loginForm.value.usuario }
@@ -106,6 +106,7 @@ export class LoginComponent implements OnInit {
     } catch (error) {
       this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
     } finally {
+      sessionStorage.clear();
       this.loading.cambiarestadoloading(false);
     }
   }

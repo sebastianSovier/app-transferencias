@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoadingPageComponent } from './loading-page.component';
 import { LoadingPageService } from 'src/app/services/loading-page.service';
-import { LoadingPageComponent } from 'src/app/Utils/loading-page/loading-page.component';
-
 
 @NgModule({
   imports: [

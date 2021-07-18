@@ -24,6 +24,7 @@ export class NuevoDestinatarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading.cambiarestadoloading(true);
     this.ObtenerBancos();
     this.ingresarDestinatarioFormGroup = this._formBuilder.group({
       nombre_destinatario: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],

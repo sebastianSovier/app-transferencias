@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoadingPageService {
-
   private subject: Subject<any> = new Subject<any>();
   public emisor: any = this.subject.asObservable();
   @Output() condicion = false

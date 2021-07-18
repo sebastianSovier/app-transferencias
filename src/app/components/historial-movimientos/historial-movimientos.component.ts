@@ -33,6 +33,7 @@ export class HistorialMovimientosComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, private loading: LoadingPageService, private transferenciasService: TransferenciasService) { }
 
   ngOnInit(): void {
+    this.loading.cambiarestadoloading(true);
     this.ConsultarMovimientos();
   }
 

@@ -12,32 +12,32 @@ import { LoadingPageService } from './services/loading-page.service';
 import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LoadingPageModule } from './components/login/loading-page.module';
+import { LoadingPageModule } from './Utils/loading-page/loading-page.module';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule,} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatTableModule} from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule, } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatSelectModule} from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
 import { DirectiveModule } from './Utils/pipes/directivas.module';
 import { FormatRutDirective } from './Utils/pipes/format-rut.directive';
 import { FormatRutPipe } from './Utils/pipes/format-rut.pipe';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 export function initializeApp(appConfig: AppConfig) {
-	return () => appConfig.load();
+  return () => appConfig.load();
 }
 
 @NgModule({
@@ -82,16 +82,16 @@ export function initializeApp(appConfig: AppConfig) {
     MatExpansionModule,
     MatSidenavModule,
   ],
-  providers: [ FormatRutDirective,
-		FormatRutPipe,LoadingPageService,
+  providers: [LoadingPageService, FormatRutDirective,
+    FormatRutPipe,
     AppConfig,
     {
-			provide: APP_INITIALIZER,
-			useFactory: initializeApp,
-			deps: [AppConfig],
-			multi: true,
-		},
-     {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppConfig],
+      multi: true,
+    },
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true

@@ -27,6 +27,7 @@ export class GenerarTransferenciaComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, private route: Router, public dialog: MatDialog, private destinatarioService: DestinatarioService, private transferenciasService: TransferenciasService, private loading: LoadingPageService, private _formBuilder: FormBuilder) {
   }
   ngOnInit(): void {
+    this.loading.cambiarestadoloading(true);
     this.ObtenerDestinatarios();
     this.ingresarTransferenciaFormGroup = this._formBuilder.group({
       monto_transferencia: ['', [Validators.required, Validators.min(1)]],

@@ -7,7 +7,6 @@ import { LoadingPageService } from 'src/app/services/loading-page.service';
   styleUrls: ['./loading-page.component.scss']
 })
 export class LoadingPageComponent implements OnInit {
-
   condicion = true;
   constructor(private loading: LoadingPageService) {
     this.loading.emisor.subscribe((d: { condicion: boolean; }) => {
@@ -23,5 +22,4 @@ export class LoadingPageComponent implements OnInit {
   cambiarestado(condition: boolean) {
     this.condicion = condition;
   }
-
 }
