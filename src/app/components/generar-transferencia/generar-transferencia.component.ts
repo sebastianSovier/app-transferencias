@@ -42,7 +42,7 @@ export class GenerarTransferenciaComponent implements OnInit {
       if (this.ingresarTransferenciaFormGroup.valid) {
         const objetoTransferencia = { destinatario_id: this.selectedDestinatario.destinatario_id, monto_transferencia: this.getMontoTransferencia };
         this.transferenciasService.CrearTransferencia(objetoTransferencia).subscribe((datos) => {
-          if(datos.datos.Codigo === AppConfig.settings.CodigoExitoso.metadata){
+          if(datos.datos.Codigo === AppConfig.settings.CodigoExitoso){
             this.selectedDestinatario = new Destinatario();
             this.ingresarTransferenciaFormGroup.reset();
             this.ingresarTransferenciaFormGroup.clearValidators();
