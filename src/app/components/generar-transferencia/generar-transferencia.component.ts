@@ -38,23 +38,22 @@ export class GenerarTransferenciaComponent implements OnInit {
 
   IngresarTransferencia() {
     try {
-
       this.loading.cambiarestadoloading(true);
       if (this.ingresarTransferenciaFormGroup.valid) {
         const objetoTransferencia = { destinatario_id: this.selectedDestinatario.destinatario_id, monto_transferencia: this.getMontoTransferencia };
         this.transferenciasService.CrearTransferencia(objetoTransferencia).subscribe((datos) => {
-          if(datos.datos.Codigo === "0"){
+          if(datos.datos.Codigo === AppConfig.settings.CodigoExitoso.metadata){
             this.selectedDestinatario = new Destinatario();
             this.ingresarTransferenciaFormGroup.reset();
             this.ingresarTransferenciaFormGroup.clearValidators();
             this.openSnackBar("operacion exitosa","Aceptar");
           }else{
-            this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+            this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
           }
         });
       }
     } catch (error) {
-      this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+      this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
     } finally {
       this.loading.cambiarestadoloading(false);
 
@@ -67,12 +66,16 @@ export class GenerarTransferenciaComponent implements OnInit {
     try {
       this.loading.cambiarestadoloading(true);
       this.destinatarioService.ObtenerDestinatarios().subscribe((datos) => {
-        this.listaDestinatarios = datos.data;
+        if(datos.datos.codigo === AppConfig.settings.CodigoExitoso){
+        this.listaDestinatarios = datos.datos.data.data;
         console.log(this.listaDestinatarios);
+        }else{
+          this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
+        }
       });
 
     } catch (error) {
-      this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+      this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
     } finally {
       this.loading.cambiarestadoloading(false);
 
@@ -84,7 +87,7 @@ export class GenerarTransferenciaComponent implements OnInit {
       this.loading.cambiarestadoloading(true);
       this.selectedDestinatario = destinatario;
     } catch (error) {
-      this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+      this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction.metadata));
     } finally {
       this.loading.cambiarestadoloading(false);
     }

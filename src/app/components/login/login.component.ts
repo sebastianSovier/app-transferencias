@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
         });
       }
     } catch (error) {
-      this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+      this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
     } finally {
       this.loading.cambiarestadoloading(false);
     }
@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
         });
       }
     } catch (error) {
-      this.openSnackBar(AppConfig.settings.ErrorCatch.metadata, AppConfig.settings.ErrorCatchAction.metadata);
+      this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
     } finally {
       sessionStorage.clear();
       this.loading.cambiarestadoloading(false);

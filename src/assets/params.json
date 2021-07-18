@@ -1,5 +1,7 @@
 {
     "UrlApi": "https://secure-headland-74545.herokuapp.com",
-    "ErrorCatch":"Hubo Problemas Al Ejecutar la Peticion.",
-    "ErrorCatchAction":"Reintente"
+    "ErrorCatch": "Hubo Problemas Al Ejecutar la Peticion.",
+    "ErrorCatchAction": "Reintente",
+    "CodigoExitoso": "0",
+    "CodigoError": "1"
 }

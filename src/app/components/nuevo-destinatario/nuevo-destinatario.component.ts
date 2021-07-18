@@ -56,7 +56,7 @@ export class NuevoDestinatarioComponent implements OnInit {
           correo_destinatario: this.getCorreoDestinatario, telefono_destinatario: this.getTelefonoDestinatario, banco_destino: this.getBancoDestino, tipo_cuenta: this.getTipoCuenta, numero_cuenta: this.getNumeroCuenta
         };
         this.destinatarioService.CrearDestinatario(objetoDestinatario).subscribe((datos) => {
-          if (datos.datos.Codigo === "0") {
+          if (datos.datos.Codigo === AppConfig.settings.CodigoExitoso) {
             this.ingresarDestinatarioFormGroup.reset();
             this.ingresarDestinatarioFormGroup.clearValidators();
             this.openSnackBar("operacion exitosa","Aceptar");

@@ -19,12 +19,13 @@ export class LoginService {
   }
 
   IniciarSesion(loginRequest: any) {
-    
-    const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi +'/Account/Login', loginRequest);
+    const headers = new HttpHeaders({'Access-Control-Allow-Origin': '*' });
+    const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi +'/Account/Login', loginRequest,{headers: headers});
     return result;
   }
   CrearUsuario(loginRequest: any) {
-    const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi +'/Account/IngresarUsuario', loginRequest);
+    const headers = new HttpHeaders({'Access-Control-Allow-Origin': '*' });
+    const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi +'/Account/IngresarUsuario', loginRequest,{headers: headers});
     return result;
   }
 }
