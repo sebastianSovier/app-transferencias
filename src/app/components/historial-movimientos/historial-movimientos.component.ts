@@ -40,12 +40,13 @@ export class HistorialMovimientosComponent implements OnInit {
   ConsultarMovimientos() {
     try {
       this.loading.cambiarestadoloading(true);
-      this.transferenciasService.ObtenerHistorialMovimientos().subscribe((datos) => {
+      const requestMovimientos = { usuario: sessionStorage.getItem('usuario') }
+      this.transferenciasService.ObtenerHistorialMovimientos(requestMovimientos).subscribe((datos) => {
         console.log(datos);
-        if(datos.datos.Codigo === AppConfig.settings.CodigoExitoso){
+        if (datos.datos.Codigo === AppConfig.settings.CodigoExitoso) {
           this.TransferenciasData = datos.datos.data.data;
           this.dataSourceTransferencias.data = this.TransferenciasData;
-        }else{
+        } else {
           this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
         }
       });

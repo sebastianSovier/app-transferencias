@@ -96,6 +96,7 @@ export class LoginComponent implements OnInit {
           } else if (datos.access_Token !== undefined && datos.access_Token.length > 0 && datos.auth === true) {
             this._snackBar.dismiss();
             sessionStorage.setItem('token', datos.access_Token);
+            sessionStorage.setItem('usuario',datos.usuario);
             this.logged = true;
             this.loginService.enviaCondicion(true);
           } else {

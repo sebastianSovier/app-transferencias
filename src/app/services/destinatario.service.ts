@@ -11,9 +11,9 @@ export class DestinatarioService {
   constructor(private http: HttpClient) { }
 
 
-  ObtenerDestinatarios() {
+  ObtenerDestinatarios(requestDestinatario:any) {
     const headers = new HttpHeaders({'Authorization':'Bearer '+sessionStorage.getItem('token'),'Access-Control-Allow-Origin': '*' });
-    const result: Observable<any> = this.http.get(AppConfig.settings.UrlApi +'/Destinatario/ObtenerDestinatario',{headers: headers});
+    const result: Observable<any> = this.http.post(AppConfig.settings.UrlApi +'/Destinatario/ObtenerDestinatario',requestDestinatario,{headers: headers});
     return result;
   }
 

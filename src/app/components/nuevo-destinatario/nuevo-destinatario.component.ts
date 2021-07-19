@@ -54,7 +54,7 @@ export class NuevoDestinatarioComponent implements OnInit {
       if (this.ingresarDestinatarioFormGroup.valid) {
         const objetoDestinatario = {
           nombre_destinatario: this.getNombreDestinatario, rut_destinatario: this.getRutDestinatario, dv_destinatario: this.rutproperties.devuelveDigito(this.getRutDestinatario),
-          correo_destinatario: this.getCorreoDestinatario, telefono_destinatario: this.getTelefonoDestinatario, banco_destino: this.getBancoDestino, tipo_cuenta: this.getTipoCuenta, numero_cuenta: this.getNumeroCuenta
+          correo_destinatario: this.getCorreoDestinatario, telefono_destinatario: this.getTelefonoDestinatario, banco_destino: this.getBancoDestino, tipo_cuenta: this.getTipoCuenta, numero_cuenta: this.getNumeroCuenta,usuario:sessionStorage.getItem('usuario')
         };
         this.destinatarioService.CrearDestinatario(objetoDestinatario).subscribe((datos) => {
           if (datos.datos.Codigo === AppConfig.settings.CodigoExitoso) {

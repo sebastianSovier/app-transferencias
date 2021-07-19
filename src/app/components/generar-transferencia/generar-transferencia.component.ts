@@ -41,14 +41,14 @@ export class GenerarTransferenciaComponent implements OnInit {
     try {
       this.loading.cambiarestadoloading(true);
       if (this.ingresarTransferenciaFormGroup.valid) {
-        const objetoTransferencia = { destinatario_id: this.selectedDestinatario.destinatario_id, monto_transferencia: this.getMontoTransferencia };
+        const objetoTransferencia = { destinatario_id: this.selectedDestinatario.destinatario_id, monto_transferencia: this.getMontoTransferencia,usuario:sessionStorage.getItem('usuario') };
         this.transferenciasService.CrearTransferencia(objetoTransferencia).subscribe((datos) => {
-          if(datos.datos.Codigo === AppConfig.settings.CodigoExitoso){
+          if (datos.datos.Codigo === AppConfig.settings.CodigoExitoso) {
             this.selectedDestinatario = new Destinatario();
             this.ingresarTransferenciaFormGroup.reset();
             this.ingresarTransferenciaFormGroup.clearValidators();
-            this.openSnackBar("operacion exitosa","Aceptar");
-          }else{
+            this.openSnackBar("operacion exitosa", "Aceptar");
+          } else {
             this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
           }
         });
@@ -66,11 +66,12 @@ export class GenerarTransferenciaComponent implements OnInit {
   ObtenerDestinatarios() {
     try {
       this.loading.cambiarestadoloading(true);
-      this.destinatarioService.ObtenerDestinatarios().subscribe((datos) => {
-        if(datos.datos.Codigo === AppConfig.settings.CodigoExitoso){
-        this.listaDestinatarios = datos.datos.data.data;
-        console.log(this.listaDestinatarios);
-        }else{
+      const requestDestinatarios = { usuario: sessionStorage.getItem('usuario') }
+      this.destinatarioService.ObtenerDestinatarios(requestDestinatarios).subscribe((datos) => {
+        if (datos.datos.Codigo === AppConfig.settings.CodigoExitoso) {
+          this.listaDestinatarios = datos.datos.data.data;
+          console.log(this.listaDestinatarios);
+        } else {
           this.openSnackBar(String(AppConfig.settings.ErrorCatch), String(AppConfig.settings.ErrorCatchAction));
         }
       });
